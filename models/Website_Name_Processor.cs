@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Timothys_Digital_Solutions_Company_Website_Windows.models
 {
-    public class Website_Name_Processor
+    public abstract class Website_Name_Processor
     {
         public static MySql.Data.MySqlClient.MySqlConnection connection;
 
