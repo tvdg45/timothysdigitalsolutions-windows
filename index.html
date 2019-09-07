@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html xmlns="https://www.w3.org/1999/xhtml" lang="en">
+<head>
+</head>
+<body style="text-align: center; margin-left: 0px; margin-right: 0px; background-color: #FBDFCC; margin-top: auto; margin-bottom: auto; font-family: Arial, Helvetica, sans-serif;">
+    <script type='text/javascript'>
+        var current_protocol = location.protocol;
+        var bad_protocol = "http:";
+        var complete_url = "https://" + window.location.hostname;
+
+        if (current_protocol == bad_protocol) {
+
+            window.location = "https://" +  + window.location.hostname;
+        }
+    </script>
+    <script type="text/javascript" src="https://www.timothysdigitalsolutions.com/backstretch/js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="https://www.timothysdigitalsolutions.com/backstretch/js/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.timothysdigitalsolutions.com/backstretch/js/jquery.backstretch.js"></script>
+    <div class="content"></div>
+    <style>
+        .loading {
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        .unsucessful {
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+
+        @media only screen and (min-width: 1001px) {
+
+            .social_media {
+                width: 20%;
+                padding: 5px;
+            }
+        }
+
+        @media only screen and (max-width: 1000px) {
+
+            .social_media {
+                padding: 5px;
+            }
+        }
+    </style>
+    <script type='text/javascript'>
+			$(document).ready(function() {
+
+				var xhttp = new XMLHttpRequest();
+				var html_code = "";
+
+				xhttp.onreadystatechange = function() {
+
+					if (this.readyState == 0 || this.readyState == 1 || this.readyState == 2 || this.readyState == 3) {
+
+						setInterval(function(){
+
+							$(".loading_sign").fadeIn(1500);
+							$(".loading_sign").fadeOut(1500);
+						}, 3000);
+
+						$("body").css("background-color", "#5a3428");
+
+						$("head").append("<link rel=\"icon\" href=\"https://www.timothysdigitalsolutions.com/images/timothys-digital-solutions-icon-background.png\" sizes=\"32x32\" />");
+						$("head").append("<title>Timothy's Digital Solutions - Global web development, SEO services, and E-commerce</title>");
+
+						html_code = "<div class=\"loading\">";
+						html_code += "<div style=\"text-align: center; width: 100%\">";
+						html_code += "<img alt=\"Company logo\" src=\"https://www.timothysdigitalsolutions.com/images/timothys-digital-solutions-icon.png\" style=\"width: 100%\" />";
+						html_code += "</div>";
+						html_code += "<div style=\"text-align: center\">";
+						html_code += "<p><span class=\"loading_sign\" style=\"color: #ffffff; font-size: 20pt; display: none\">Loading...</span></p>";
+						html_code += "</div>";
+						html_code += "<div style=\"text-align: left; display: none\">";
+						html_code += "<p>Check out the website services, for your future business automation and marketing needs.  ";
+						html_code += "It is one thing to know what you need for success, but it is another to achieve that need.</p>";
+						html_code += "</div>";
+						html_code += "</div>";
+
+						$(".content").html(html_code);
+					}
+
+					if (this.readyState == 4 && (this.status == 0 || this.status == 500)) {
+
+						$("body").css("background-color", "#5a3428");
+
+						$("head").html("");
+
+						$("head").append("<link rel=\"icon\" href=\"https://www.timothysdigitalsolutions.com/images/timothys-digital-solutions-icon-background.png\" sizes=\"32x32\" />");
+						$("head").append("<title>Timothy's Digital Solutions - Global web development, SEO services, and E-commerce</title>");
+
+						html_code = "<div class=\"unsucessful\">";
+						html_code += "<div style=\"text-align: center\">";
+						html_code += "<img alt=\"Company logo\" src=\"https://www.timothysdigitalsolutions.com/images/timothys-digital-solutions-icon.png\" style=\"width: 100%\" />";
+						html_code += "</div>";
+						html_code += "<div style=\"text-align: left; display: none\">";
+						html_code += "<p>Check out the website services, for your future business automation and marketing needs.  ";
+						html_code += "It is one thing to know what you need for success, but it is another to achieve that need.</p>";
+						html_code += "</div>";
+						html_code += "</div>";
+
+						$(".content").html(html_code);
+					}
+
+					if (this.readyState == 4 && this.status == 200) {
+
+						$("body").css("background-color", "transparent");
+
+						$("head").html("");
+						$("head").append("<meta content=\"en-us\" http-equiv=\"Content-Language\" />");
+						$("head").append("<meta content=\"text/html; charset=utf-8\" http-equiv=\"Content-Type\" />");
+						$("head").append("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />");
+						$("head").append("<title></title>");
+
+						$("title").html("");
+
+						$("body").html(this.responseText);
+
+						var elements = document.getElementsByClassName('typewrite');
+
+						for (var i=0; i<elements.length; i++) {
+
+							var toRotate = elements[i].getAttribute('data-type');
+							var period = elements[i].getAttribute('data-period');
+
+							if (toRotate) {
+
+								new TxtType(elements[i], JSON.parse(toRotate), period);
+							}
+						}
+
+						// INJECT CSS
+						var css = document.createElement("style");
+						css.type = "text/css";
+						css.innerHTML = ".typewrite > .wrap { color: #ffffff}";
+						document.body.appendChild(css);
+					}
+				};
+
+				xhttp.open("POST", "https://localhost:44380/web-page.aspx");
+				xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+				xhttp.send("url=https://www.timothysdigitalsolutions.com&page=&show_website=yes");
+			});
+
+			console.clear();
+    </script>
+</body>
+</html>
